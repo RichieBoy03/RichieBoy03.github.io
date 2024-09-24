@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saffron Sands</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: rgba(0, 0, 0, 0.945);
+        color: aliceblue;
+        font-family: "Arial", sans-serif;
+        
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 65px; /* Set a fixed height */
+        z-index: 10;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 70px;
+        margin-bottom: 0px;
+      }
+
+      .logo {
+        color: rgb(255, 255, 255);
+        font-family: "Protest Guerrilla", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .S {
+        color: rgb(236, 86, 22);
+        font-size: 40px;
+        margin: 0;
+      }
+
+      .burger {
+        display: none;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        color: #8c8c8e;
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      .burger:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 2px;
+        background: white;
+        box-shadow: 0 12px 0 0 white, 0 6px 0 0 white;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      nav a {
+        font-family: "Arial", serif;
+        font-size: 12px;
+        color: #8c8c8e;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-decoration: none;
+        margin: 0 18px;
+      }
+
+      nav a.active,
+      nav a:hover {
+        color: white;
+      }
+
+      .donate-link {
+        width: 72px;
+        text-align: center;
+        font-size: 12px;
+        color: #8c8c8e;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-decoration: none;
+        padding-bottom: 6px;
+      }
+
+      .donate-link:hover {
+        color: white;
+        text-decoration: none;
+      }
+      
+    /* Left side container for text */
+    .container {
+      text-align: left;
+      padding-left: 50px;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container h1 {
+      font-size: 4em; /* Increased text size */
+      font-weight: bold;
+      animation: topAppear 1s ease-in-out forwards;
+    }
+
+    .container h2 {
+      font-size: 3em; /* Increased text size */
+      font-weight: bold;
+      animation: topAppear 2s ease-in-out forwards;
+    }
+
+    .container p {
+      font-size: 2em; /* Increased text size */
+      animation: leftAppear 3s ease-in-out forwards;
+    }
+
+    /* Animation for appearing letters from top */
+    @keyframes topAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(-100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation for text moving from the left */
+    @keyframes leftAppear {
+      0% {
+        opacity: 0;
+        transform: translateX(-200px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Letter by letter animation */
+    .animated-text span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: letterAppear 0.5s forwards;
+    }
+
+    .animated-text span:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .animated-text span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .animated-text span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .animated-text span:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    .animated-text span:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+    .animated-text span:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+    .animated-text span:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+    .animated-text span:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+    .animated-text span:nth-child(9) {
+      animation-delay: 0.9s;
+    }
+    .animated-text span:nth-child(10) {
+      animation-delay: 1s;
+    }
+
+    @keyframes letterAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Right side container for rotating image */
+    .image-container {
+      padding-right: 50%;
+      margin-left: 600px;
+     
+    }
+
+    img {
+      width: 550px;
+      height: 550px;
+      animation: rotate360 10s linear infinite;
+    }
+
+    @keyframes rotate360 {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+      .content {
+        margin-top: 65px; /* To prevent content from hiding behind header */
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgb(197, 197, 197);
+        position: relative;
+      }
+
+      .back {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        z-index: -1;
+        margin-top: 0%;
+      }
+
+      .Menu_Heading {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 80px;
+        font-family: sans-serif;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .Menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0 20px;
+        box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0.945);
+      }
+
+      .items {
+        width: 260px; /* Adjust the width and include margin */
+        height: 300px;
+        border: 2px solid white;
+        padding: 12px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.945);
+        color: white;
+        font-weight: 800;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        border-radius: 2.5%;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+      }
+
+      footer {
+        
+        background-color: rgba(0, 0, 0, 0);
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+
+      .footer-section {
+        flex: 1;
+        margin: 10px;
+      }
+
+      .footer-section h3 {
+        margin-top: 20px;
+        border-bottom: 2px solid #ffffff;
+        padding-bottom: 5px;
+      }
+
+      .footer-section p {
+        margin: 20px 0 ;
+      }
+
+      .footer-section a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .footer-section a:hover {
+        text-decoration: underline;
+      }
+
+      .social-media img {
+        width: 30px;
+        height: 30px;
+        margin: 30px 10px;
+      }
+
+      .navigation ul {
+        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+      }
+
+      .navigation ul li {
+        margin: 5px 0;
+      }
+
+      .footer-bottom {
+        margin-top: 20px;
+      }
+
+      @media (max-aspect-ratio: 16/9) {
+        .back {
+          width: auto;
+          height: 100%;
+        }
+      }
+
+      @media (min-aspect-ratio: 16/9) {
+        .back {
+          height: auto;
+        }
+      }
+
+      @media screen and (max-width: 799px) {
+        .burger {
+          display: block;
+        }
+
+        nav {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        .burger {
+          display: none;
+        }
+      }
+      div.elem-group {
+  margin: 20px 0;
+}
+
+.form{
+
+  background-image: url(Background.jpg);
+  
+  background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        margin-bottom: 30px;
+       
+}
+.form_items {
+  margin-top: 50px;
+  height: 1200px;
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly opaque background */
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Light border */
+  border-radius: 10px; /* Rounded corners for the border */
+  backdrop-filter: blur(10px); /* Blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Optional: adds shadow for better effect */
+  color: #fff;
+}
+
+div.elem-group.inlined {
+  width: 49%;
+  display: inline-block;
+  flex-wrap: wrap;
+  margin-left: 1%;
+  z-index: 2;
+}
+
+label {
+  display: block;
+  font-family: 'Nanum Gothic';
+  padding-bottom: 10px;
+  font-size: 1.25em;
+}
+
+input, select, textarea {
+  border-radius: 2px;
+  border: 2px solid #ffffff;
+  color: #fff;
+  box-sizing: border-box;
+  font-size: 1.25em;
+  font-family: 'Nanum Gothic';
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+}
+
+div.elem-group.inlined input {
+  width: 95%;
+  display: inline-block;
+
+}
+
+textarea {
+  height: 200px;
+}
+
+hr {
+  border: 1px dotted #ccc;
+}
+
+button {
+  height: 50px;
+  width: 170px;
+  background-color: rgb(236, 86, 22);;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-family: 'Nanum Gothic';
+  border-radius: 7px;
+  cursor: pointer;
+  align-items: center;
+}
+
+button:hover {
+  border: 2px solid black;
+}
+.div-item {
+        width: 17%; /* Adjust the width as needed */
+        height: 150px;
+        border: 2px solid white; /* Optional: Adds a border to each div */
+        margin: 5px; /* Optional: Adds some space around each div */
+        padding: 12px; /* Optional: Adds some padding inside each div */
+        text-align: center; /* Optional: Centers the text inside each div */
+        color: white;
+        margin-top: 30px;
+        margin-bottom: 120px;
+}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="Saffron.html" class="logo">
+        <span class="S">S</span>affron <span class="S">S</span>ands
+      </a>
+      <div class="burger"></div>
+      <nav>
+        <a href="Saffron.html">Home</a>
+        <a href="saffron_Menu.html">Menu</a>
+        <a href="#">Cart</a>
+      </nav>
+      <a href="Saffron_contact.html" class="donate-link">Contact</a>
+    </header>
+<body>
+  <!-- Left side for text -->
+  <div class="container">
+    <h1 class="animated-text">
+      <span>W</span><span>E</span><span>L</span><span>C</span><span>O</span
+      ><span>M</span><span>E</span> <span> </span><span>T</span><span>O</span>
+    </h1>
+    <h2 class="animated-text">
+      <span>S</span><span>A</span><span>F</span><span>F</span><span>R</span
+      ><span>O</span><span>N</span> <span> </span><span>S</span><span>A</span
+      ><span>N</span><span>D</span><span>S</span>
+    </h2>
+    <p class="animated-text">
+      <span>C</span><span>R</span><span>E</span><span>A</span><span>T</span
+      ><span>I</span><span>N</span><span>G</span> <span>M</span><span>E</span
+      ><span>M</span><span>O</span><span>R</span><span>I</span><span>E</span
+      ><span>S</span>,
+    </p>
+    <p class="animated-text">
+      <span>O</span><span>N</span><span>E</span> <span>S</span><span>P</span
+      ><span>I</span><span>C</span><span>E</span> <span>A</span><span>T</span>
+      <span>A</span>
+      <span>T</span><span>I</span><span>M</span><span>E</span>.
+    </p>
+  </div>
+
+  <!-- Right side for rotating image -->
+  <div class="image-container">
+    <img src="rotate.jpg" alt="Rotating Image" />
+  </div>
+    <div class="content">
+      <video autoplay loop muted playsinline class="back">
+        <source
+          src="FREEDIO_ _Restaurant buffet _ royalty free HD stock video footage.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="Menu_Heading" id="Menu_Start">Menu</div>
+    <div class="Menu" id="Menu">
+      <div class="items">item 1
+        <img src="mutton biriyani.jpg">
+      </div>
+      <div class="items">item 2</div>
+      <div class="items">item 3</div>
+      <div class="items">item 4</div>
+      <div class="items">item 5</div>
+      <div class="items">item 6</div>
+      <div class="items">item 7</div>
+      <div class="items">item 8</div>
+      <div class="items">item 9</div>
+      <div class="items">item 10</div>
+    </div>
+    <div class="form">
+      <div class="Menu_Heading" id="Menu_Start">Table Reservation</div>
+      <div class="item_holder"></div>
+      <div class="form_items">
+    <form action="reservation.php" method="post" ></form>
+  <div class="elem-group">
+    <label for="name">Your Name</label>
+    <input type="text" id="name" name="visitor_name" placeholder="Name" pattern=[A-Z\sa-z]{3,20} required>
+  </div>
+  <div class="elem-group">
+    <label for="email">Your E-mail</label>
+    <input type="email" id="email" name="visitor_email" placeholder="example@email.com" required>
+  </div>
+  <div class="elem-group">
+    <label for="phone">Your Phone</label>
+    <input type="tel" id="phone" name="visitor_phone" placeholder="(+91) 123456789" pattern=(\d{3})-?\s?(\d{3})-?\s?(\d{4}) required>
+  </div>
+  <hr>
+  <div class="elem-group inlined">
+    <label for="adult">Adults</label>
+    <input type="number" id="adult" name="total_adults" placeholder="2" min="1" required>
+  </div>
+  <div class="elem-group inlined">
+    <label for="child">Children</label>
+    <input type="number" id="child" name="total_children" placeholder="2" min="0" required>
+  </div>
+  <div class="elem-group inlined">
+    <label for="checkin-date">Reservation Date</label>
+    <input type="date" id="checkin-date" name="checkin" required>
+  </div>
+  <div class="elem-group inlined">
+    <label for="checkout-date">Reservation Time</label>
+    <input type="time" id="time" name="time" required>
+  </div>
+  
+  <hr>
+  <div class="elem-group">
+    <label for="message">Special Requests</label>
+    <textarea id="message" name="visitor_message" placeholder="Tell us anything else that might be important." required></textarea>
+  </div>
+  <button type="submit">Make Reservation</button>
+</form>
+</div> 
+</div>
+<div class=></div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section contact-info">
+          <h3>Contact Us</h3>
+          <p>#34,HSR Layout, Bangalore, India.</p>
+          <p>Email: SaffronSands@Gmail.com</p>
+          <p>Phone: (+91) 1234567890</p>
+        </div>
+        <div class="footer-section social-media">
+          <h3>Follow Us</h3>
+          <a href="#"><img src="facebook-icon.png" alt="Facebook" /></a>
+          <a href="#"><img src="twitter-icon.png" alt="Twitter" /></a>
+          <a href="#"><img src="instagram-icon.png" alt="Instagram" /></a>
+        </div>
+        <div class="footer-section navigation">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Saffron Sands. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
